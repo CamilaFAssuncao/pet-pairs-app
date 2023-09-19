@@ -7,16 +7,22 @@ const Welcome = () => {
   return (
     <StyledContainer>
     <div className="welcome-container">
+      
       <div className="logo">
         <img className='logoimg' src="images/logo.png" alt="Logo" />
       </div>
 
+    <div className="title-image">
+
+      <div className="title">
       <h1>Welcome to Pet Pairs</h1>
       <h3>Find your perfect furry friend!</h3>
+      </div>
+
       <div className="image">
         <img className='welcomeimg' src="images/welcomeimg.png" alt="Welcome image" />
       </div>
-
+      </div>
       {/* Buttons */}
       <div className="buttons">
         <Link to="/login" className="login-button">
@@ -35,10 +41,13 @@ export default Welcome;
 
 const StyledContainer = styled.div`
 font-family: 'Roboto mono', monospace;
+
+.welcome-container {
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+}
 
 .logoimg {
   width: 40%;
@@ -47,7 +56,9 @@ justify-content: center;
 .buttons {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;}
+  justify-content: space-around;
+  
+}
 
   h1 {
     font-size: 2rem;
@@ -57,7 +68,7 @@ justify-content: center;
   }
 
   .welcomeimg {
-    max-width: 80%;
+    max-width: 600px;
   }
 
   .register-button, .login-button {
@@ -72,6 +83,7 @@ justify-content: center;
     font-size: 1.5rem;
     width: 150px; 
     text-align: center;
+    
   }
   .register-button:hover, .login-button:hover {
     background-color: white; 
