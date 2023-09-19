@@ -12,11 +12,10 @@ const Welcome = () => {
       </div>
 
       <h1>Welcome to Pet Pairs</h1>
+      <h3>Find your perfect furry friend!</h3>
       <div className="image">
         <img className='welcomeimg' src="images/welcomeimg.png" alt="Welcome image" />
       </div>
-
-      <p>Find your perfect furry friend!</p>
 
       {/* Buttons */}
       <div className="buttons">
@@ -45,6 +44,11 @@ justify-content: center;
   width: 40%;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;}
+
   h1 {
     font-size: 2rem;
     color: #25938f;
@@ -54,5 +58,24 @@ justify-content: center;
 
   .welcomeimg {
     max-width: 80%;
+  }
+
+  .register-button, .login-button {
+    background-color: #25938f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 1.5rem;
+    width: 150px; 
+    text-align: center;
+  }
+  .register-button:hover, .login-button:hover {
+    background-color: white; 
+    color: #25938f; 
+    border: 4px solid #25938f; /
   }
 `;
