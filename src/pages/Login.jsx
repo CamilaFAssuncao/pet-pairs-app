@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
-import catdog from "../../public/images/catdog.gif";
+import catdog from "../gifs/catdog.gif";
 
 const initialState = {
   email: "",
@@ -67,7 +67,7 @@ const Login = () => {
         />
         <p>Forgot Password?</p>
         <button onClick={handleSubmit} disabled={isLoading}>
-          {isLoading ? "Logging in..." : "LOGIN"} {/* Display loading message */}
+          {isLoading ? "Logging in..." : "Login"} {/* Display loading message */}
         </button>
         {error ? <div className="error">{error}</div> : null}
         <p className="registerHere">
