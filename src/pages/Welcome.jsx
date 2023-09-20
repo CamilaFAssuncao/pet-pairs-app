@@ -80,7 +80,7 @@ justify-content: center;
     border: none;
     border-radius: 5px;
     padding: 15px;
-    cursor: pointer;
+    cursor: url('/images/paw.png'), auto;
     transition: all 0.3s;
     text-decoration: none;
     font-size: 1.5rem;

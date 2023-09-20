@@ -1,0 +1,234 @@
+{
+    "User": [
+        {
+            "userID": 1,
+            "dateJoined": "2023-09-18",
+            "profilePicture": "https://example.com/user1.jpg",
+            "location": "New York"
+        },
+        {
+            "userID": 2,
+            "dateJoined": "2023-09-18",
+            "profilePicture": "https://example.com/user2.jpg",
+            "location": "Boston"
+        },
+        {
+            "userID": 3,
+            "dateJoined": "2023-09-18",
+            "profilePicture": "https://example.com/user3.jpg",
+            "location": "New York"
+        },
+        {
+            "userID": 4,
+            "dateJoined": "2023-09-18",
+            "profilePicture": "https://example.com/user4.jpg",
+            "location": "Chicago"
+        }
+    ],
+    "Auth": [
+        {
+            "authID": 1,
+            "userID": 1,
+            "username": "user1",
+            "password": "hashed_password1",
+            "email": "user1@example.com"
+        },
+        {
+            "authID": 2,
+            "userID": 2,
+            "username": "user2",
+            "password": "hashed_password2",
+            "email": "user2@example.com"
+        },
+        {
+            "authID": 3,
+            "userID": 3,
+            "username": "user3",
+            "password": "hashed_password3",
+            "email": "user3@example.com"
+        },
+        {
+            "authID": 4,
+            "userID": 4,
+            "username": "user4",
+            "password": "hashed_password4",
+            "email": "user4@example.com"
+        }
+    ],
+    "Pet": [
+        {
+            "petID": 1,
+            "name": "Pet1",
+            "type": "Cat",
+            "characteristics": "Short-haired",
+            "age": 8,
+            "gender": "Male",
+            "description": "This is pet 1",
+            "status": "Adopted",
+            "location": "San Francisco",
+            "ownerID": 3
+        },
+        {
+            "petID": 2,
+            "name": "Pet2",
+            "type": "Cat",
+            "characteristics": "Big paws",
+            "age": 12,
+            "gender": "Male",
+            "description": "This is pet 2",
+            "status": "Available",
+            "location": "San Francisco",
+            "ownerID": 3
+        },
+        {
+            "petID": 3,
+            "name": "Pet3",
+            "type": "Cat",
+            "characteristics": "Big paws",
+            "age": 15,
+            "gender": "Male",
+            "description": "This is pet 3",
+            "status": "Available",
+            "location": "San Francisco",
+            "ownerID": 4
+        },
+        {
+            "petID": 4,
+            "name": "Pet4",
+            "type": "Dog",
+            "characteristics": "Long-tailed",
+            "age": 8,
+            "gender": "Female",
+            "description": "This is pet 4",
+            "status": "Adopted",
+            "location": "New York",
+            "ownerID": 1
+        }
+    ],
+    "Post": [
+        {
+            "postID": 1,
+            "text": "This is post 1",
+            "image": "https://example.com/post1.jpg",
+            "datePosted": "2023-09-18",
+            "userID": 1,
+            "petID": 9
+        },
+        {
+            "postID": 2,
+            "text": "This is post 2",
+            "image": "https://example.com/post2.jpg",
+            "datePosted": "2023-09-18",
+            "userID": 1,
+            "petID": 4
+        },
+        {
+            "postID": 3,
+            "text": "This is post 3",
+            "image": "https://example.com/post3.jpg",
+            "datePosted": "2023-09-18",
+            "userID": 3,
+            "petID": 8
+        },
+        {
+            "postID": 4,
+            "text": "This is post 4",
+            "image": "https://example.com/post4.jpg",
+            "datePosted": "2023-09-18",
+            "userID": 3,
+            "petID": 4
+        }
+    ],
+    "Comment": [
+        {
+            "commentID": 1,
+            "text": "This is comment 1",
+            "dateCommented": "2023-09-18",
+            "postID": 6,
+            "userID": 3
+        },
+        {
+            "commentID": 2,
+            "text": "This is comment 2",
+            "dateCommented": "2023-09-18",
+            "postID": 4,
+            "userID": 2
+        },
+        {
+            "commentID": 3,
+            "text": "This is comment 3",
+            "dateCommented": "2023-09-18",
+            "postID": 5,
+            "userID": 5
+        },
+        {
+            "commentID": 4,
+            "text": "This is comment 4",
+            "dateCommented": "2023-09-18",
+            "postID": 2,
+            "userID": 1
+        }
+    ],
+    "Like": [
+        {
+            "likeID": 1,
+            "dateLiked": "2023-09-18",
+            "postID": 11,
+            "userID": 3
+        },
+        {
+            "likeID": 2,
+            "dateLiked": "2023-09-18",
+            "postID": 7,
+            "userID": 1
+        },
+        {
+            "likeID": 3,
+            "dateLiked": "2023-09-18",
+            "postID": 3,
+            "userID": 2
+        },
+        {
+            "likeID": 4,
+            "dateLiked": "2023-09-18",
+            "postID": 4,
+            "userID": 4
+        }
+    ],
+    "Tag": [
+        {
+            "tagID": 1,
+            "name": "Active"
+        },
+        {
+            "tagID": 2,
+            "name": "Friendly"
+        },
+        {
+            "tagID": 3,
+            "name": "Friendly"
+        },
+        {
+            "tagID": 4,
+            "name": "Friendly"
+        }
+    ],
+    "Pet_Tag": [
+        {
+            "petID": 1,
+            "tagID": 2
+        },
+        {
+            "petID": 8,
+            "tagID": 3
+        },
+        {
+            "petID": 7,
+            "tagID": 1
+        },
+        {
+            "petID": 1,
+            "tagID": 3
+        }
+    ]
+}
