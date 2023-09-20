@@ -109,7 +109,7 @@ const StyledRegister = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Set a minimum height to cover the viewport */
+  width: 100%;
 
   form {
     display: flex;

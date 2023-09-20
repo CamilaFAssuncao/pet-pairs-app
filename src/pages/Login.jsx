@@ -39,7 +39,7 @@ const Login = () => {
       <div className="login-container">
 
       <div className="logo">
-        <img className='logoimg' src="images/logo2.png" alt="Logo" />
+        <img className='logoimg' src="images/logo.png" alt="Logo" />
       </div>
 
       <div className="form-container">
@@ -104,7 +104,10 @@ const StyleLogin = styled.div`
 
 .form-container {
   display: flex;
-  flex-direction: row;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
   input {
@@ -136,6 +139,15 @@ button:hover {
   background-color: white; 
     color: #25938f; 
     border: 4px solid #25938f; 
+}
+
+.gif {
+  width: 250px;
+    height: 250px;
+    border-radius: 100000px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
   @media only screen and (max-width: 599px) {

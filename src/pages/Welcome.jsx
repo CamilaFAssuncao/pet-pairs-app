@@ -41,6 +41,7 @@ export default Welcome;
 
 const StyledContainer = styled.div`
 font-family: 'Roboto mono', monospace;
+width: 100%;
 
 .welcome-container {
 display: flex;
@@ -56,7 +57,8 @@ justify-content: center;
 .buttons {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  width: 100%;
   
 }
 
@@ -69,6 +71,7 @@ justify-content: center;
 
   .welcomeimg {
     max-width: 600px;
+    width: 100%;
   }
 
   .register-button, .login-button {
@@ -89,5 +92,12 @@ justify-content: center;
     background-color: white; 
     color: #25938f; 
     border: 4px solid #25938f; /
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
