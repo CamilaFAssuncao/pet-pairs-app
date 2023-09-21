@@ -52,6 +52,7 @@ justify-content: center;
 
 .logoimg {
   width: 40%;
+  max-width: 300px;
 }
 
 .buttons {

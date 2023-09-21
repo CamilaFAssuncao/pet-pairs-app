@@ -126,6 +126,7 @@ const StyledRegister = styled.div`
 
   .logoimg {
     width: 40%;
+    max-width: 300px;
   }
 
   .gif {

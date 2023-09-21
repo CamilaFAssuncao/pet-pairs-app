@@ -1,7 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { styled } from "styled-components";
+import { Link } from "react-router-dom";
+import babygroot from "../gifs/babygroot.gif";
 
 const GetAPlant = () => {
-  // Your component code here
+  return (
+
+    <StyledGetAPlant>
+      <div className="getaplant-container">
+<img className='logoimg' src="images/logo.png" alt="Logo" />
+
+<div className="main-content">
+
+<h3>Too many filters selected. That's too much pressure for a furry friend!</h3>
+<img className='gif'  src={babygroot} alt="Plant gif" />
+<h3>Have you considered getting a plant instead?</h3>
+</div>
+
+
+      </div>
+    </StyledGetAPlant>
+  );
 };
 
 export default GetAPlant;
+
+const StyledGetAPlant = styled.div`
+  font-family: 'Roboto mono', monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .logoimg {
+    width: 40%;
+    max-width: 300px;
+  }
+
+  .gif {
+    max-width: 600px;
+    width: 70%;
+    background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  }
+
+  h3 {
+    color: #030303;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31px;
+  text-align: center;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+`;
