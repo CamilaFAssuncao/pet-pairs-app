@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import catdog from "../gifs/catdog.gif";
+import logo from "../images/logo.png";
+import paw from "../images/paw.png";
 
 const initialState = {
   email: "",
@@ -39,7 +41,7 @@ const Login = () => {
       <div className="login-container">
 
       <div className="logo">
-        <img className='logoimg' src="images/logo.png" alt="Logo" />
+        <img className='logoimg' src={logo} alt="Logo" />
       </div>
 
       <div className="form-container">
@@ -127,7 +129,7 @@ button {
     border: none;
     border-radius: 5px;
     padding: 15px;
-    cursor: url('/images/paw.png'), auto;
+    cursor: url(${paw}), auto;
     transition: all 0.3s;
     text-decoration: none;
     font-size: 1rem;

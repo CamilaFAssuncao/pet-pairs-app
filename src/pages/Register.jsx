@@ -3,6 +3,8 @@ import { styled } from "styled-components";
 import { Link} from "react-router-dom"; 
 import { useNavigate } from "react-router-dom";
 import catcomputer from "../gifs/catcomputer.gif";
+import logo from "../images/logo.png";
+import paw from "../images/paw.png";
 
 const initialState = {
   first_name: "",
@@ -37,7 +39,7 @@ const Register = () => {
       <div className="register-container">
 
       <div className="logo">
-        <img className='logoimg' src="images/logo.png" alt="Logo" />
+        <img className='logoimg' src={logo} alt="Logo" />
       </div>
 
       <div className="form-container">
@@ -150,7 +152,7 @@ const StyledRegister = styled.div`
     border: none;
     border-radius: 5px;
     padding: 15px;
-    cursor: url('/images/paw.png'), auto;
+    cursor: url(${paw}), auto;
     transition: all 0.3s;
     text-decoration: none;
     font-size: 1rem;

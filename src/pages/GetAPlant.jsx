@@ -1,13 +1,13 @@
 import React from 'react';
 import { styled } from "styled-components";
 import babygroot from "../gifs/babygroot.gif";
-// import Navbar from '../components/NavBar';
+import logo from "../images/logo.png";
 
 const GetAPlant = () => {
   return (
     <StyledGetAPlant>
       <div className="getaplant-container">
-        <img className='logoimg' src="/images/logo.png" alt="Logo" />
+        <img className='logoimg' src={logo} alt="Logo" />
         <div className="main-content">
           <h3>Too many filters selected. That's too much pressure for a furry friend!</h3>
           <img className='gif' src={babygroot} alt="Plant gif" />

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import logo from "../images/logo.png";
+import welcomeimg from "../images/welcomeimg.png";
+import paw from "../images/paw.png";
 
 
 const Welcome = () => {
@@ -9,7 +12,7 @@ const Welcome = () => {
     <div className="welcome-container">
       
       <div className="logo">
-        <img className='logoimg' src="images/logo.png" alt="Logo" />
+        <img className='logoimg' src={logo} alt="Logo" />
       </div>
 
     <div className="title-image">
@@ -20,7 +23,7 @@ const Welcome = () => {
       </div>
 
       <div className="image">
-        <img className='welcomeimg' src="images/welcomeimg.png" alt="Welcome image" />
+        <img className='welcomeimg' src={welcomeimg} alt="Welcome image" />
       </div>
       </div>
       {/* Buttons */}
@@ -81,7 +84,7 @@ justify-content: center;
     border: none;
     border-radius: 5px;
     padding: 15px;
-    cursor: url('/images/paw.png'), auto;
+    cursor: url(${paw}), auto;
     transition: all 0.3s;
     text-decoration: none;
     font-size: 1.5rem;

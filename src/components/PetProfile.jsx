@@ -1,22 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
+import Comments from '../components/Comments';
 
 const StyledPetProfile = styled.div`
   font-family: 'Roboto mono', monospace;
   display: flex;
   flex-direction: column;
 
+  .petprofile-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center; 
+  }
+
   .pet-card {
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
+    flex:1;
+    max-width: calc(33.33% - 20px); 
+    box-sizing: border-box;
   }
 
   .pet-picture {
-    width: 100px; /* Adjust as needed */
-    height: 100px; /* Adjust as needed */
+    width: 200px; 
+    height: 200px;
   }
+
+  @media (max-width: 768px) {
+    .pet-card {
+      max-width: calc(50% - 20px); /* Max width for tablets */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pet-card {
+      max-width: 100%; /* Max width for mobile */
+    }
+  }
+
 `;
+
+
 
 // Function to calculate age in years and months
 const calculateAgeInYears = (ageInMonths) => {
@@ -84,9 +110,9 @@ const PetProfile = () => {
             <div key={pet.petID} className="pet-card">
               <img className="pet-picture" src={pet.image} alt="" />
               <p className="location">{pet.location}</p>
-              <h1 className="name-age">
+              <h2 className="name-age">
                 {pet.name}, {ageInYearsAndMonths} {/* Display age here */}
-              </h1>
+              </h2>
               <h3 className="characteristics">
                 {pet.gender}, {pet.type}
               </h3>

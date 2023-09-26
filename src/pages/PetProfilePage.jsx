@@ -11,5 +11,9 @@ const PetProfilePage = () => {
 
 export default PetProfilePage;
 
-  
+// const styledPetProfilePage = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+// `;  
 
