@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from "styled-components";
 import babygroot from "../gifs/babygroot.gif";
-import Navbar from '../components/NavBar';
+// import Navbar from '../components/NavBar';
 
 const GetAPlant = () => {
   return (
@@ -13,7 +13,7 @@ const GetAPlant = () => {
           <img className='gif' src={babygroot} alt="Plant gif" />
           <h3>Have you considered getting a plant instead?</h3>
         </div>
-        <Navbar />
+        {/* <Navbar /> */}
       </div>
     </StyledGetAPlant>
   );

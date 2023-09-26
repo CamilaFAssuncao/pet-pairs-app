@@ -10,11 +10,9 @@ import Welcome from './pages/Welcome';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import PetResults from './pages/PetResults';
-import PetProfile from './pages/PetProfile';
+import PetProfilePage from './pages/PetProfilePage';
 import GetAPlant from './pages/GetAPlant';
 import FindYourPet from './pages/FindYourPet';
-import AddAPet from './pages/AddAPet';
-import UserProfile from './pages/UserProfile';
 import { createGlobalStyle } from 'styled-components';
 
 // Define your routes in an array
@@ -24,11 +22,9 @@ const routes = [
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
   { path: "/findyourpet", element: <FindYourPet /> },
-  { path: "/petprofile", element: <PetProfile /> },
+  { path: "/petprofilepage", element: <PetProfilePage /> },
   { path: "/petresults", element: <PetResults /> },
   { path: "/getaplant", element: <GetAPlant /> },
-  { path: "/addapet", element: <AddAPet /> },
-  { path: "/userprofile", element: <UserProfile /> }
 ];
 
 const GlobalStyles = createGlobalStyle`

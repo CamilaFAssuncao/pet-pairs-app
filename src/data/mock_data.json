@@ -55,7 +55,7 @@
             "email": "user4@example.com"
         }
     ],
-    "Pet": [
+    "PetData": [
         {
             "petID": 1,
             "name": "Pet1",
@@ -66,7 +66,8 @@
             "description": "This is pet 1",
             "status": "Adopted",
             "location": "San Francisco",
-            "ownerID": 3
+            "ownerID": 3,
+            "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1915&q=80"
         },
         {
             "petID": 2,
@@ -78,7 +79,8 @@
             "description": "This is pet 2",
             "status": "Available",
             "location": "San Francisco",
-            "ownerID": 3
+            "ownerID": 3,
+            "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1915&q=80"
         },
         {
             "petID": 3,
@@ -90,7 +92,8 @@
             "description": "This is pet 3",
             "status": "Available",
             "location": "San Francisco",
-            "ownerID": 4
+            "ownerID": 4,
+            "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1915&q=80"
         },
         {
             "petID": 4,
@@ -102,7 +105,8 @@
             "description": "This is pet 4",
             "status": "Adopted",
             "location": "New York",
-            "ownerID": 1
+            "ownerID": 1,
+            "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1915&q=80"
         }
     ],
     "Post": [
