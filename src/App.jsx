@@ -5,6 +5,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Home from './pages/Home';
 import Welcome from './pages/Welcome';
 import Register from './pages/Register';
@@ -14,6 +15,7 @@ import PetProfilePage from './pages/PetProfilePage';
 import GetAPlant from './pages/GetAPlant';
 import FindYourPet from './pages/FindYourPet';
 import { createGlobalStyle } from 'styled-components';
+import RootLayout from "./components/RootLayout";
 
 // Define your routes in an array
 const routes = [
@@ -48,8 +50,6 @@ const GlobalStyles = createGlobalStyle`
   #root {
     flex-grow: 1; /* Makes #root element fill remaining vertical space */
   }
-
-  /* You can add more global styles here */
 `;
 
 function App() {
@@ -71,7 +71,14 @@ function App() {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <BrowserRouter>
+      <GlobalStyles />
+      <RootLayout>
+        <RouterProvider router={router} />
+      </RootLayout>
+    </BrowserRouter>
+  );
 }
 
 export default App;

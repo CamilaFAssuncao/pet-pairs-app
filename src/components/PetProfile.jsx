@@ -14,29 +14,58 @@ const StyledPetProfile = styled.div`
     justify-content: center; 
   }
 
+  .pet-picture {
+    width: 250px;
+    height: 300px;
+    background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  }
+
+  .pet-info {
+    margin:0;
+    h4 {
+        color: #030303;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 21px;
+    }
+    h3 {
+        color: #030303;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 22px;
+    }
+}
+
+
   .pet-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 335px;
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
-    flex:1;
-    max-width: calc(33.33% - 20px); 
+    box-shadow: 0px 2px 10px rgba(3,3,3,0.1);
+    border-radius: 5px;
+    border: none;
     box-sizing: border-box;
-  }
 
-  .pet-picture {
-    width: 200px; 
-    height: 200px;
-  }
-
-  @media (max-width: 768px) {
-    .pet-card {
-      max-width: calc(50% - 20px); /* Max width for tablets */
+    p {
+    align-self: flex-end;
+    padding: 0.5rem;
+    margin: 0;
+    font-size: 12px;
     }
   }
 
   @media (max-width: 480px) {
     .pet-card {
-      max-width: 100%; /* Max width for mobile */
+    //   max-width: 100%; /* Max width for mobile */
+    
     }
   }
 
@@ -110,17 +139,19 @@ const PetProfile = () => {
             <div key={pet.petID} className="pet-card">
               <img className="pet-picture" src={pet.image} alt="" />
               <p className="location">{pet.location}</p>
-              <h2 className="name-age">
+              <div className="pet-info">
+              <h3 className="name-age">
                 {pet.name}, {ageInYearsAndMonths} {/* Display age here */}
-              </h2>
-              <h3 className="characteristics">
-                {pet.gender}, {pet.type}
               </h3>
+              <h5 className="characteristics">
+                {pet.gender}, {pet.type}
+              </h5>
               <h4 className="description">{pet.description}</h4>
               <p className="status">{pet.status}</p>
               <div className="interests">
                 <h4>Interests</h4>
                 {/* You can add pet interests here if available in your data */}
+              </div>
               </div>
               <div className="comments-container">
                 {/* Add comments or additional information here if available in your data */}

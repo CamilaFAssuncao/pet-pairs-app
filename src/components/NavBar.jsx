@@ -1,20 +1,15 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Home, Search, PlusSquare, UserCircle2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import logo from "../images/logo.png";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/");
-  };
-
+  
   return (
     <StyledNavbar>
       <div className="menu_logo">
         <NavLink to="/home">
-          <img src="/images/logo.png" alt="logo's image" />
+          <img src={logo} alt="logo's image" />
         </NavLink>
       </div>
 
@@ -22,7 +17,7 @@ const Navbar = () => {
         <NavLink to="/home" activeClassName="active">
           <Home />
         </NavLink>
-        <NavLink to="/findyourpet" activeClassName="active">
+        <NavLink to="/petprofilepage" activeClassName="active">
           <Search />
         </NavLink>
 
@@ -41,15 +36,15 @@ const Navbar = () => {
 export default Navbar;
 
 const StyledNavbar = styled.nav`
-  background-color: #25938f;
-  color: white;
+  background-color: white;
+  color: #25938f;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   .menu_logo img {
-    max-width: 100px; /* Adjust the size as needed */
+    max-width: 150px; /* Adjust the size as needed */
   }
 
   .menuMobile a {

@@ -23,7 +23,7 @@ const Username = styled.span`
   margin-right: 5px;
 `;
 
-const Comment = ({ userPicture, commentText, username }) => {
+const Comments = ({ userPicture, commentText, username }) => {
   return (
     <CommentContainer>
       <UserPicture src={userPicture} alt={`${username}'s profile`} />
@@ -35,4 +35,4 @@ const Comment = ({ userPicture, commentText, username }) => {
   );
 };
 
-export default Comment;
+export default Comments;
