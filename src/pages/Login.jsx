@@ -6,6 +6,7 @@ import logo from "../images/logo.png";
 import paw from "../images/paw.png";
 
 const initialState = {
+  username: "",
   email: "",
   password: "",
 };
@@ -51,6 +52,14 @@ const Login = () => {
 
       <form className='form'>
         <h1>Find your puurfect furry friend</h1>
+        <input
+          type="username"
+          id="username"
+          placeholder="Username"
+          onChange={handleChange}
+          value={form.username}
+          required
+        />
         <input
           type="email"
           id="email"

@@ -9,7 +9,7 @@ import paw from "../images/paw.png";
 const initialState = {
   first_name: "",
   last_name: "",
-  location: "",
+  username: "",
   email: "",
   password: "",
 };
@@ -69,8 +69,8 @@ const Register = () => {
         />
         <input
           type="text"
-          id="location"
-          placeholder="Location"
+          id="username"
+          placeholder="Username"
           onChange={handleChange}
           value={form.location}
           required

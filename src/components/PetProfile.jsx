@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 import Comments from '../components/Comments';
+import paw from '../images/paw.png';
 
 const StyledPetProfile = styled.div`
   font-family: 'Roboto mono', monospace;
@@ -54,7 +55,7 @@ const StyledPetProfile = styled.div`
     border-radius: 5px;
     border: none;
     box-sizing: border-box;
-    cursor: pointer;
+    cursor: url(${paw}), auto;
 
     p {
       align-self: flex-end;
