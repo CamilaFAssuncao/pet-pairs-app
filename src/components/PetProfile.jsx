@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
-import Comments from '../components/Comments';
 import paw from '../images/paw.png';
+import PetResults from './PetResults';
 
 const StyledPetProfile = styled.div`
   font-family: 'Roboto mono', monospace;
@@ -148,6 +148,7 @@ const PetProfile = () => {
   return (
     <StyledPetProfile>
       <div className="petprofile-container">
+        <PetResults />
         {pets.map((pet) => {
           const ageInYearsAndMonths = calculateAgeInYears(pet.age);
 
@@ -172,10 +173,7 @@ const PetProfile = () => {
               <div className={`additional-info ${showInfo[pet.petID] ? 'open' : 'closed'}`}>
                 <h4 className="description">{pet.description}</h4>
                 <p className="status">{pet.status}</p>
-                <div className="interests">
-                  <h4>Interests</h4>
-                  {/* You can add pet interests here if available in your data */}
-                </div>
+
                 <div className="comments-container">
                  
                 </div>

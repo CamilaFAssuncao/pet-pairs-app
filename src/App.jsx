@@ -10,7 +10,6 @@ import Home from './pages/Home';
 import Welcome from './pages/Welcome';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import PetResults from './pages/PetResults';
 import PetProfilePage from './pages/PetProfilePage';
 import GetAPlant from './pages/GetAPlant';
 import FindYourPet from './pages/FindYourPet';
@@ -25,7 +24,7 @@ const routes = [
   { path: "/login", element: <Login /> },
   { path: "/findyourpet", element: <FindYourPet /> },
   { path: "/petprofilepage", element: <PetProfilePage /> },
-  { path: "/petresults", element: <PetResults /> },
+  // { path: "/petresults", element: <PetResults /> },
   { path: "/getaplant", element: <GetAPlant /> },
 ];
 
