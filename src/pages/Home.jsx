@@ -11,16 +11,6 @@ const Home = () => {
           <h3>Homepage</h3>
           <i className="search"></i>
         </header>
-        <div className="filter-categories">
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
-        </div>
-
-      <div className="petcards">
-      </div>
 
       </div>
     </StyleHome>
@@ -31,4 +21,8 @@ export default Home;
 
 const StyleHome = styled.div`
   font-family: 'Roboto mono', monospace;
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
