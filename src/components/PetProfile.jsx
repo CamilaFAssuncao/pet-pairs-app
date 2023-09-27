@@ -9,36 +9,37 @@ const StyledPetProfile = styled.div`
 
   .petprofile-container {
     display: flex;
-    flex-wrap: wrap; 
-    gap: 20px; 
-    justify-content: center; 
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
   }
 
   .pet-picture {
     width: 250px;
     height: 300px;
     background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 5px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
   }
 
   .pet-info {
-    margin:0;
+    margin: 0;
+    align-self: flex-start;
+    padding: 1rem;
     h4 {
-        color: #030303;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 21px;
+      color: #030303;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 21px;
     }
     h3 {
-        color: #030303;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 22px;
+      color: #030303;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 22px;
     }
-}
-
+  }
 
   .pet-card {
     display: flex;
@@ -49,61 +50,68 @@ const StyledPetProfile = styled.div`
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
-    box-shadow: 0px 2px 10px rgba(3,3,3,0.1);
+    box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
     border-radius: 5px;
     border: none;
     box-sizing: border-box;
+    cursor: pointer;
 
     p {
-    align-self: flex-end;
-    padding: 0.5rem;
-    margin: 0;
-    font-size: 12px;
+      align-self: flex-end;
+      padding: 0.5rem;
+      margin: 0;
+      font-size: 12px;
+    }
+
+    /* Style for when additional info is open */
+    .additional-info.open {
+      display: block;
+    }
+
+    /* Style for when additional info is closed */
+    .additional-info.closed {
+      display: none;
     }
   }
 
   @media (max-width: 480px) {
     .pet-card {
-    //   max-width: 100%; /* Max width for mobile */
-    
+      //   max-width: 100%; /* Max width for mobile */
     }
   }
-
 `;
 
-
-
-// Function to calculate age in years and months
 const calculateAgeInYears = (ageInMonths) => {
-    if (ageInMonths >= 12) {
-        const years = Math.floor(ageInMonths / 12);
-        const remainingMonths = ageInMonths % 12;
-        
-        if (remainingMonths === 0) {
-          if (years === 1) {
-            return '1 year';
-          } else {
-            return `${years} years`;
-          }
-        } else {
-          if (years === 1) {
-            return `1 year and ${remainingMonths} months`;
-          } else {
-            return `${years} years and ${remainingMonths} months`;
-          }
-        }
+  if (ageInMonths >= 12) {
+    const years = Math.floor(ageInMonths / 12);
+    const remainingMonths = ageInMonths % 12;
+
+    if (remainingMonths === 0) {
+      if (years === 1) {
+        return '1 year';
       } else {
-        if (ageInMonths === 1) {
-          return '1 month';
-        } else {
-          return `${ageInMonths} months`;
-        }
+        return `${years} years`;
+      }
+    } else {
+      if (years === 1) {
+        return `1 year and ${remainingMonths} months`;
+      } else {
+        return `${years} years and ${remainingMonths} months`;
       }
     }
-  
+  } else {
+    if (ageInMonths === 1) {
+      return '1 month';
+    } else {
+      return `${ageInMonths} months`;
+    }
+  }
+};
+
 const PetProfile = () => {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState(null);
+  const [showInfo, setShowInfo] = useState({}); // State to track info display
 
   useEffect(() => {
     // Import the data dynamically
@@ -128,33 +136,48 @@ const PetProfile = () => {
     return <div>Error: {error}</div>;
   }
 
+  // Function to toggle additional info display
+  const toggleInfo = (petID) => {
+    setShowInfo((prevShowInfo) => ({
+      ...prevShowInfo,
+      [petID]: !prevShowInfo[petID], // Toggle the value for the pet
+    }));
+  };
+
   return (
     <StyledPetProfile>
       <div className="petprofile-container">
         {pets.map((pet) => {
-          // Calculate age in years and months
           const ageInYearsAndMonths = calculateAgeInYears(pet.age);
 
           return (
-            <div key={pet.petID} className="pet-card">
+            <div
+              key={pet.petID}
+              className={`pet-card ${
+                showInfo[pet.petID] ? 'open' : 'closed'
+              }`}
+              onClick={() => toggleInfo(pet.petID)} // Toggle info on click
+            >
               <img className="pet-picture" src={pet.image} alt="" />
               <p className="location">{pet.location}</p>
               <div className="pet-info">
-              <h3 className="name-age">
-                {pet.name}, {ageInYearsAndMonths} {/* Display age here */}
-              </h3>
-              <h5 className="characteristics">
-                {pet.gender}, {pet.type}
-              </h5>
-              <h4 className="description">{pet.description}</h4>
-              <p className="status">{pet.status}</p>
-              <div className="interests">
-                <h4>Interests</h4>
-                {/* You can add pet interests here if available in your data */}
+                <h3 className="name-age">
+                  {pet.name}, {ageInYearsAndMonths}
+                </h3>
+                <h5 className="characteristics">
+                  {pet.gender}, {pet.type}
+                </h5>
               </div>
-              </div>
-              <div className="comments-container">
-                {/* Add comments or additional information here if available in your data */}
+              <div className={`additional-info ${showInfo[pet.petID] ? 'open' : 'closed'}`}>
+                <h4 className="description">{pet.description}</h4>
+                <p className="status">{pet.status}</p>
+                <div className="interests">
+                  <h4>Interests</h4>
+                  {/* You can add pet interests here if available in your data */}
+                </div>
+                <div className="comments-container">
+                 
+                </div>
               </div>
             </div>
           );
@@ -165,3 +188,4 @@ const PetProfile = () => {
 };
 
 export default PetProfile;
+

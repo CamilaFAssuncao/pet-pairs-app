@@ -8,7 +8,7 @@ const Home = () => {
       <div className="home-container">
         <header>
           <i className="menu"></i>
-          <h1>Homepage</h1>
+          <h3>Homepage</h3>
           <i className="search"></i>
         </header>
         <div className="filter-categories">

@@ -1,3 +1,4 @@
+//NOT WORKING YET
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Home, Search, PlusSquare, UserCircle2 } from "lucide-react";
@@ -14,20 +15,21 @@ const Navbar = () => {
       </div>
 
       <div className="menuMobile">
-        <NavLink to="/home" activeClassName="active">
+      <NavLink to="/home" activeClassName="active">
+
           <Home />
         </NavLink>
         <NavLink to="/petprofilepage" activeClassName="active">
           <Search />
         </NavLink>
 
-        <NavLink to="/addapet" activeClassName="active">
+        {/* <NavLink to="/addapet" activeClassName="active">
           <PlusSquare />
         </NavLink>
 
         <NavLink to="/userprofile" activeClassName="active">
           <UserCircle2 />
-        </NavLink>
+        </NavLink> */}
       </div>
     </StyledNavbar>
   );
@@ -48,6 +50,7 @@ const StyledNavbar = styled.nav`
   }
 
   .menuMobile a {
+    background-color: #25938f;
     color: white;
     text-decoration: none;
     margin-right: 20px; /* Adjust the spacing as needed */

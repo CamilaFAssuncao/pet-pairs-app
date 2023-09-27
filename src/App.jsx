@@ -5,7 +5,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 import Home from './pages/Home';
 import Welcome from './pages/Welcome';
 import Register from './pages/Register';
@@ -15,7 +15,7 @@ import PetProfilePage from './pages/PetProfilePage';
 import GetAPlant from './pages/GetAPlant';
 import FindYourPet from './pages/FindYourPet';
 import { createGlobalStyle } from 'styled-components';
-import RootLayout from "./components/RootLayout";
+// import RootLayout from "./components/RootLayout";
 
 // Define your routes in an array
 const routes = [
@@ -71,14 +71,7 @@ function App() {
     )
   );
 
-  return (
-    <BrowserRouter>
-      <GlobalStyles />
-      <RootLayout>
-        <RouterProvider router={router} />
-      </RootLayout>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
