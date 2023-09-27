@@ -6,29 +6,48 @@ const StyleCategory = styled.div`
   width: 100%;
   font-family: "Roboto mono", monospace;
 
-  .category-filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
-
   .category-icons {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  img {
-    width: 48px;
-    height: 48px;
-    border-radius: 2px;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  .category-name {
-    text-align: center; /* Center the category name */
+    justify-content: space-evenly;
+    
+    .category-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80px; /* Set a fixed width */
+      height: 80px; /* Set a fixed height */
+      
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 2px;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      
+      .category-name {
+        text-align: center; /* Center the category name */
+      }
+    }
+    
+      @media (max-width: 768px) {
+        .category-icon {
+          width: 60px; /* Adjust the width for smaller screens */
+          height: 60px; /* Adjust the height for smaller screens */
+          
+          img {
+            width: 40px; /* Adjust the width for smaller screens */
+            height: 40px; /* Adjust the height for smaller screens */
+          }
+          
+          .category-name {
+            font-size: 11px; /* Adjust the font size for smaller screens */
+          }
+        }
+      }
+    
   }
 `;
 

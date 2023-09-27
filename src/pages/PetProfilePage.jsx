@@ -6,6 +6,8 @@ const PetProfilePage = () => {
   const categoryData = [
     { name: 'cat', image: 'src/images/cat.png' },
     { name: 'dog', image: 'src/images/dog.png' },
+    { name: 'male', image: 'src/images/male.png' },
+    { name: 'female', image: 'src/images/female.png' },
     { name: 'energetic', image: 'src/images/energetic.png' },
     { name: 'calm', image: 'src/images/calm.png' },
     { name: 'friendly', image: 'src/images/friendly.png' },
