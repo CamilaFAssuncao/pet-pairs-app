@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { styled } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import catdog from "../gifs/catdog.gif";
 import logo from "../images/logo.png";
 import paw from "../images/paw.png";
@@ -100,28 +100,41 @@ const initialState = {
 
 const Login = () => {
   const [form, setForm] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false); // Define isLoading
-  const [error, setError] = useState(""); // Define error
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(""); 
+  const navigate = useNavigate();
+
+  const login = async (userData) => {
+    setIsLoading(true);
+    try {
+      const response = await axios.post('https://petadopt-431a50d84aab.herokuapp.com/api/users/login/', userData);
+      if (response.status === 200) {
+        setError("");
+        const token = response.data.token; 
+        localStorage.setItem('authToken', token);
+        navigate('/home');
+      }
+    } catch (error) {
+      setError(error.response ? error.response.data.message || "An error occurred during login." : "An error occurred during login.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Set isLoading to true while processing
-    try {
-      // Your login logic here
-      // Example: await login(form);
-      setForm(initialState);
-    } catch (err) {
-      setError(err.message || "An error occurred"); // Set error message
-    } finally {
-      setIsLoading(false); // Set isLoading back to false
-    }
+    await login(form);
+    setForm(initialState);
+    alert("You are now logged in!");
   };
 
-  const handleChange = (event) => {
-    setForm({
-      ...form,
-      [event.target.id]: event.target.value,
-    });
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setForm((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
   };
 
   return (
@@ -167,7 +180,7 @@ const Login = () => {
         <button onClick={handleSubmit} disabled={isLoading}>
           {isLoading ? "Logging in..." : "Login"} {/* Display loading message */}
         </button>
-        {error ? <div className="error">{error}</div> : null}
+        {error ? <div className="error">{JSON.stringify(error)}</div> : null}
         <p className="registerHere">
           Don't have an account yet? <Link to="/register">Register here</Link>
         </p>
