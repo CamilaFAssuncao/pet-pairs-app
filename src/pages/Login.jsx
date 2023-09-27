@@ -4,6 +4,93 @@ import { Link } from "react-router-dom";
 import catdog from "../gifs/catdog.gif";
 import logo from "../images/logo.png";
 import paw from "../images/paw.png";
+import axios from "axios";
+
+const StyleLogin = styled.div`
+  font-family: 'Roboto mono', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .logoimg {
+    width: 40%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    color: #161616;
+  }
+
+.form-container {
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+  input {
+    text-align: left;
+    padding: 0.7rem;
+    background-color: white;
+    margin: 0.5rem 0;
+    width: 200px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 5px 2px 10px #25938f;
+  }
+
+button {
+  background-color: #25938f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: url(${paw}), auto;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 1rem;
+    width: 150px; 
+    text-align: center;
+}
+
+button:hover {
+  background-color: white; 
+    color: #25938f; 
+    border: 4px solid #25938f; 
+}
+
+.gif {
+  width: 250px;
+    height: 250px;
+    border-radius: 100000px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+  @media only screen and (max-width: 599px) {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+     
+    }
+
+    .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+  }
+  
+}`;
 
 const initialState = {
   username: "",
@@ -93,88 +180,4 @@ const Login = () => {
 
 export default Login;
 
-const StyleLogin = styled.div`
-  font-family: 'Roboto mono', monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 
-  .logoimg {
-    width: 40%;
-  }
-
-  form {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    color: #161616;
-  }
-
-.form-container {
-  display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-  input {
-    text-align: left;
-    padding: 0.7rem;
-    background-color: white;
-    margin: 0.5rem 0;
-    width: 200px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 5px 2px 10px #25938f;
-  }
-
-button {
-  background-color: #25938f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 15px;
-    cursor: url(${paw}), auto;
-    transition: all 0.3s;
-    text-decoration: none;
-    font-size: 1rem;
-    width: 150px; 
-    text-align: center;
-}
-
-button:hover {
-  background-color: white; 
-    color: #25938f; 
-    border: 4px solid #25938f; 
-}
-
-.gif {
-  width: 250px;
-    height: 250px;
-    border-radius: 100000px;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-  @media only screen and (max-width: 599px) {
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center; 
-     
-    }
-
-    .image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-
-  }
-  
-}`
