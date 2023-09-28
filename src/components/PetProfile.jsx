@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 import paw from '../images/paw.png';
-import PetResults from './PetResults';
+// import PetResults from './PetResults';
+import axios from 'axios';
+
+const API_URL = 'https://petadopt-431a50d84aab.herokuapp.com/api/pets/';
 
 const StyledPetProfile = styled.div`
   font-family: 'Roboto mono', monospace;
@@ -51,7 +54,7 @@ const StyledPetProfile = styled.div`
     margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
-    box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
+    box-shadow: 1px 2px 10px #25938f;
     border-radius: 5px;
     border: none;
     box-sizing: border-box;
@@ -110,32 +113,54 @@ const calculateAgeInYears = (ageInMonths) => {
 };
 
 const PetProfile = () => {
-  const [pets, setPets] = useState([]);
+    const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showInfo, setShowInfo] = useState({}); // State to track info display
 
   useEffect(() => {
-    // Import the data dynamically
-    import('../data/mock_data.json')
-      .then((data) => {
-        console.log('Imported Data:', data.default);
+    const fetchPets = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(API_URL);
+        setPets(response.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        // Check if PetData exists in the imported data
-        if (data.default && data.default.PetData) {
-          setPets(data.default.PetData);
-        } else {
-          setError('PetData not found in the imported data.');
-        }
-      })
-      .catch((error) => {
-        console.error('Error loading data:', error);
-        setError('Error loading data.');
-      });
+    fetchPets();
   }, []);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  console.log(pets);
+//   const [pets, setPets] = useState([]);
+//   const [error, setError] = useState(null);
+//   const [showInfo, setShowInfo] = useState({}); // State to track info display
+
+//   useEffect(() => {
+//     // Import the data dynamically
+//     import('../data/mock_data.json')
+//       .then((data) => {
+//         console.log('Imported Data:', data.default);
+
+//         // Check if PetData exists in the imported data
+//         if (data.default && data.default.PetData) {
+//           setPets(data.default.PetData);
+//         } else {
+//           setError('PetData not found in the imported data.');
+//         }
+//       })
+//       .catch((error) => {
+//         console.error('Error loading data:', error);
+//         setError('Error loading data.');
+//       });
+//   }, []);
+
+//   if (error) {
+//     return <div>Error: {error}</div>;
+//   }
 
   // Function to toggle additional info display
   const toggleInfo = (petID) => {
@@ -148,7 +173,7 @@ const PetProfile = () => {
   return (
     <StyledPetProfile>
       <div className="petprofile-container">
-        <PetResults />
+
         {pets.map((pet) => {
           const ageInYearsAndMonths = calculateAgeInYears(pet.age);
 
@@ -160,7 +185,7 @@ const PetProfile = () => {
               }`}
               onClick={() => toggleInfo(pet.petID)} // Toggle info on click
             >
-              <img className="pet-picture" src={pet.image} alt="" />
+              <img className="pet-picture" src={pet.img} alt="" />
               <p className="location">{pet.location}</p>
               <div className="pet-info">
                 <h3 className="name-age">
