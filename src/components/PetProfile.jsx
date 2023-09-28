@@ -25,6 +25,7 @@ const StyledPetProfile = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 5px;
+    padding: 1rem;
   }
 
   .pet-info {
@@ -135,33 +136,6 @@ const PetProfile = () => {
   }, []);
 
   console.log(pets);
-//   const [pets, setPets] = useState([]);
-//   const [error, setError] = useState(null);
-//   const [showInfo, setShowInfo] = useState({}); // State to track info display
-
-//   useEffect(() => {
-//     // Import the data dynamically
-//     import('../data/mock_data.json')
-//       .then((data) => {
-//         console.log('Imported Data:', data.default);
-
-//         // Check if PetData exists in the imported data
-//         if (data.default && data.default.PetData) {
-//           setPets(data.default.PetData);
-//         } else {
-//           setError('PetData not found in the imported data.');
-//         }
-//       })
-//       .catch((error) => {
-//         console.error('Error loading data:', error);
-//         setError('Error loading data.');
-//       });
-//   }, []);
-
-//   if (error) {
-//     return <div>Error: {error}</div>;
-//   }
-
   // Function to toggle additional info display
   const toggleInfo = (petID) => {
     setShowInfo((prevShowInfo) => ({
@@ -191,9 +165,9 @@ const PetProfile = () => {
                 <h3 className="name-age">
                   {pet.name}, {ageInYearsAndMonths}
                 </h3>
-                <h5 className="characteristics">
+                {/* <h5 className="characteristics">
                   {pet.gender}, {pet.type}
-                </h5>
+                </h5> */}
               </div>
               <div className={`additional-info ${showInfo[pet.petID] ? 'open' : 'closed'}`}>
                 <h4 className="description">{pet.description}</h4>
