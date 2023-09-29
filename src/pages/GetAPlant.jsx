@@ -1,19 +1,20 @@
 import React from 'react';
 import { styled } from "styled-components";
 import babygroot from "../gifs/babygroot.gif";
-import logo from "../images/logo.png";
+import Navbar from '../components/NavBar';
 
 const GetAPlant = () => {
   return (
     <StyledGetAPlant>
+      <Navbar />
       <div className="getaplant-container">
-        <img className='logoimg' src={logo} alt="Logo" />
+        
         <div className="main-content">
           <h3>Too many filters selected. That's too much pressure for a furry friend!</h3>
           <img className='gif' src={babygroot} alt="Plant gif" />
           <h3>Have you considered getting a plant instead?</h3>
         </div>
-        {/* <Navbar /> */}
+      
       </div>
     </StyledGetAPlant>
   );
@@ -46,6 +47,7 @@ const StyledGetAPlant = styled.div`
     font-weight: 400;
     line-height: 31px;
     text-align: center;
+    
   }
 
   .main-content {
@@ -53,5 +55,6 @@ const StyledGetAPlant = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
   }
 `;
