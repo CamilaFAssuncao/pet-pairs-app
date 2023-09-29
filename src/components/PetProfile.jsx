@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 import paw from '../images/paw.png';
+import Comments from '../components/Comments';
 import axios from 'axios';
 
 const API_URL = 'https://petadopt-431a50d84aab.herokuapp.com/api/pets/';
@@ -141,14 +142,35 @@ const PetProfile = () => {
     fetchPets();
   }, []);
 
-  console.log(pets);
-  // Function to toggle additional info display
-  const toggleInfo = (petID) => {
-    setShowInfo((prevShowInfo) => ({
-      ...prevShowInfo,
-      [petID]: !prevShowInfo[petID], // Toggle the value for the pet
-    }));
+  const fetchCommentsForPet = async (petID) => {
+    try {
+      const response = await axios.get(`${API_URL}${petID}/comments/`);
+      return response.data;
+    } catch (err) {
+      console.error(`Error fetching comments for pet ${petID}:`, err);
+      return [];
+    }
   };
+
+  const toggleInfo = async (petID) => {
+    if (!showInfo[petID]) {
+      // Fetch comments for the pet if they haven't been fetched yet
+      const comments = await fetchCommentsForPet(petID);
+
+      // Update the showInfo state with comments
+      setShowInfo((prevShowInfo) => ({
+        ...prevShowInfo,
+        [petID]: { comments },
+      }));
+    } else {
+      // Toggle the value for the pet
+      setShowInfo((prevShowInfo) => ({
+        ...prevShowInfo,
+        [petID]: !prevShowInfo[petID],
+      }));
+    }
+  };
+
 
   return (
     <StyledPetProfile>
@@ -180,7 +202,16 @@ const PetProfile = () => {
                 <p className="status">{pet.status}</p>
 
                 <div className="comments-container">
-                 
+                  {showInfo[pet.petID] && showInfo[pet.petID].comments && (
+                    showInfo[pet.petID].comments.map((comment) => (
+                      <Comments
+                        key={comment.id}
+                        userPicture={comment.userPicture}
+                        commentText={comment.commentText}
+                        username={comment.username}
+                      />
+                    ))
+                  )}
                 </div>
               </div>
             </div>
