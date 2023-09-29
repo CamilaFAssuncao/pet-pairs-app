@@ -6,25 +6,20 @@ import {
   RouterProvider,
 } from "react-router-dom";
 // import { BrowserRouter } from "react-router-dom";
-import Home from './pages/Home';
 import Welcome from './pages/Welcome';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import PetProfilePage from './pages/PetProfilePage';
 import GetAPlant from './pages/GetAPlant';
-import FindYourPet from './pages/FindYourPet';
 import { createGlobalStyle } from 'styled-components';
 // import RootLayout from "./components/RootLayout";
 
 // Define your routes in an array
 const routes = [
   { path: "/", element: <Welcome /> }, // Welcome as the first page
-  { path: "/home", element: <Home /> },
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
-  { path: "/findyourpet", element: <FindYourPet /> },
   { path: "/petprofilepage", element: <PetProfilePage /> },
-  // { path: "/petresults", element: <PetResults /> },
   { path: "/getaplant", element: <GetAPlant /> },
 ];
 

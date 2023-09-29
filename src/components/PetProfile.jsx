@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
 import paw from '../images/paw.png';
-// import PetResults from './PetResults';
 import axios from 'axios';
 
 const API_URL = 'https://petadopt-431a50d84aab.herokuapp.com/api/pets/';
@@ -37,12 +36,14 @@ const StyledPetProfile = styled.div`
       font-size: 16px;
       font-weight: 600;
       line-height: 21px;
+      margin: 0;
     }
     h3 {
       color: #030303;
       font-size: 18px;
       font-weight: 600;
       line-height: 22px;
+      margin: 0;
     }
   }
 
@@ -60,6 +61,11 @@ const StyledPetProfile = styled.div`
     border: none;
     box-sizing: border-box;
     cursor: url(${paw}), auto;
+
+    h4 {
+      margin: 0;
+      align-self: center;
+    }
 
     p {
       align-self: flex-end;
@@ -160,7 +166,7 @@ const PetProfile = () => {
               onClick={() => toggleInfo(pet.petID)} // Toggle info on click
             >
               <img className="pet-picture" src={pet.img} alt="" />
-              <p className="location">{pet.location}</p>
+              <p className="location">📍{pet.location}</p>
               <div className="pet-info">
                 <h3 className="name-age">
                   {pet.name}, {ageInYearsAndMonths}

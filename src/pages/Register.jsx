@@ -98,7 +98,7 @@ const Register = () => {
 
       if (response.status === 200 || response.status === 201) {
         setError('');
-        navigate('/home'); // Redirect to the desired page after successful registration
+        navigate('/petprofilepage'); // Redirect to the desired page after successful registration
       }
     } catch (error) {
       setError(error.response ? error.response.data : 'An error occurred during registration.');

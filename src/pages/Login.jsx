@@ -112,7 +112,7 @@ const Login = () => {
         setError("");
         const token = response.data.token; 
         localStorage.setItem('authToken', token);
-        navigate('/home');
+        navigate('/petprofilepage');
       }
     } catch (error) {
       setError(error.response ? error.response.data.message || "An error occurred during login." : "An error occurred during login.");

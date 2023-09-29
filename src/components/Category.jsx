@@ -9,6 +9,7 @@ const StyleCategory = styled.div`
   .category-icons {
     display: flex;
     justify-content: space-evenly;
+    padding: 1em;
     
     .category-icon {
       display: flex;
@@ -64,11 +65,11 @@ const Category = ({ data, onFilter }) => {
   };
 
   const applyFilter = () => {
-    // Filter your data based on selectedCategories
+    // Call the onFilter callback to apply the filter
     const filteredData = data.filter((item) =>
-      selectedCategories.every((category) => item.categories.includes(category))
+      selectedCategories.every((category) => item.name === category)
     );
-    onFilter(filteredData); // Call a callback function to apply the filter
+    onFilter(filteredData);
   };
 
   return (
@@ -81,15 +82,17 @@ const Category = ({ data, onFilter }) => {
               className={`category-icon ${selectedCategories.includes(category.name) ? 'selected' : ''}`}
               onClick={() => handleCategoryClick(category)}
             >
-              <img src={category.image} alt={category.name} onClick={applyFilter} />
+              <img src={category.image} alt={category.name} />
               <span className="category-name">{category.name}</span>
             </div>
           ))}
         </div>
+      
       </div>
     </StyleCategory>
   );
 };
+
 
 export default Category;
 

@@ -14,11 +14,11 @@ const PetProfilePage = () => {
     { name: 'cuddly', image: 'src/images/cuddly.png' },
   ];
 
-  const [filteredData, setFilteredData] = useState(categoryData);
+  const [filteredData, setFilteredData] = useState([]);
 
   // Define a function to handle filtering
-  const handleFilter = (filteredData) => {
-    setFilteredData(filteredData);
+  const handleFilter = (filteredPets) => {
+    setFilteredData(filteredPets);
   };
 
   return (
