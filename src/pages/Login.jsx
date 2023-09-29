@@ -2,24 +2,21 @@ import React, { useState } from 'react';
 import { styled } from "styled-components";
 import { Link, useNavigate} from "react-router-dom";
 import catdog from "../gifs/catdog.gif";
-import logo from "../images/logo.png";
 import paw from "../images/paw.png";
+import Navbar from '../components/NavBar';
 import axios from "axios";
 
 const StyleLogin = styled.div`
   font-family: 'Roboto mono', monospace;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
 
-  .logoimg {
-    width: 40%;
-  }
-
+ 
   form {
     display: flex;
-    flex-direction: row;
     text-align: center;
     flex-direction: column;
     align-items: center;
@@ -66,8 +63,8 @@ button:hover {
 }
 
 .gif {
-  width: 250px;
-    height: 250px;
+  width: 270px;
+    height: 270px;
     border-radius: 100000px;
     background-position: center center;
     background-size: cover;
@@ -79,7 +76,7 @@ button:hover {
       display: flex;
       flex-direction: column;
       align-items: center; 
-     
+     padding: 0 1rem;
     }
 
     .image {
@@ -139,11 +136,12 @@ const Login = () => {
 
   return (
     <StyleLogin>
+      <Navbar />
       <div className="login-container">
 
-      <div className="logo">
+      {/* <div className="logo">
         <img className='logoimg' src={logo} alt="Logo" />
-      </div>
+      </div> */}
 
       <div className="form-container">
       <div className="image">
@@ -187,6 +185,7 @@ const Login = () => {
       </form>
       </div>
       </div>
+      
     </StyleLogin>
   );
 };

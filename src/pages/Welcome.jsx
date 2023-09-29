@@ -1,20 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from "../images/logo.png";
 import welcomeimg from "../images/welcomeimg.png";
 import paw from "../images/paw.png";
+import Navbar from '../components/NavBar';
 
 
 const Welcome = () => {
   return (
     <StyledContainer>
+      <Navbar />
     <div className="welcome-container">
       
-      <div className="logo">
-        <img className='logoimg' src={logo} alt="Logo" />
-      </div>
-
     <div className="title-image">
 
       <div className="title">
@@ -59,6 +56,7 @@ justify-content: center;
 }
 
 .buttons {
+  padding-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

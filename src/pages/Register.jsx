@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { styled } from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import catcomputer from "../gifs/catcomputer.gif";
-import logo from "../images/logo.png";
 import paw from "../images/paw.png";
+import Navbar from '../components/NavBar';
 import axios from "axios";
 
 const StyledRegister = styled.div`
@@ -12,10 +12,12 @@ const StyledRegister = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  flex-direction: column;
 
   form {
     display: flex;
-    flex-direction: column; /* Corrected the styling to vertical */
+    text-align: center;
+    flex-direction: column; 
     align-items: center;
     color: #161616;
   }
@@ -24,15 +26,13 @@ const StyledRegister = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-  }
-
-  .logoimg {
-    width: 40%;
-    max-width: 300px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .gif {
     width: 70%;
+    border-radius: 5px;
   }
 
   input {
@@ -58,6 +58,7 @@ const StyledRegister = styled.div`
     font-size: 1rem;
     width: 150px;
     text-align: center;
+    margin-top: 1rem;
   }
 
   button:hover {
@@ -65,6 +66,23 @@ const StyledRegister = styled.div`
     color: #25938f;
     border: 4px solid #25938f;
   }
+
+  @media only screen and (max-width: 599px) {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+     
+    }
+
+    .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+  }
+
 `;
 
 const initialState = {
@@ -110,11 +128,8 @@ const Register = () => {
 
   return (
     <StyledRegister>
+      <Navbar />
       <div className="register-container">
-
-      <div className="logo">
-        <img className='logoimg' src={logo} alt="Logo" />
-      </div>
 
       <div className="form-container">
 
