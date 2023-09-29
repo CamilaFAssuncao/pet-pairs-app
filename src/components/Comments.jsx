@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+
+const API_URL = 'https://petadopt-431a50d84aab.herokuapp.com/api/comments/';
 
 const CommentContainer = styled.div`
   display: flex;

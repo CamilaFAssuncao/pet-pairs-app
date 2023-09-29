@@ -22,6 +22,12 @@ const StyledRegister = styled.div`
     color: #161616;
   }
 
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
   .form-container {
     display: flex;
     flex-direction: row;
