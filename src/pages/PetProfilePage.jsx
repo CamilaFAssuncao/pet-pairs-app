@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PetProfile from '../components/PetProfile'; 
 import Category from '../components/Category';
+import Navbar from '../components/NavBar';
 
 const PetProfilePage = () => {
   const categoryData = [
@@ -22,10 +23,13 @@ const PetProfilePage = () => {
   };
 
   return (
-    <div className="petprofile-page">
-      <Category data={categoryData} onFilter={handleFilter} />
-      <PetProfile data={filteredData} />
-    </div>
+    <>
+      <Navbar /> {/* Render the Navbar component */}
+      <div className="petprofile-page">
+        <Category data={categoryData} onFilter={handleFilter} />
+        <PetProfile data={filteredData} />
+      </div>
+    </>
   );
 };
 

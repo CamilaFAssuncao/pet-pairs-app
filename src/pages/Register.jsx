@@ -139,7 +139,7 @@ const Register = () => {
 
 
       <form onSubmit={handleSubmit}>
-      <h1>Register</h1>
+      <h1>Join us and find your new furry friend</h1>
         <input
           type="text"
           id="first_name"
@@ -184,7 +184,7 @@ const Register = () => {
         </button>
         {error ? <div className="error">{error}</div> : null}
         <p>
-        Already have an account? <Link to="/login">Log in</Link>
+        Already part of our pet-loving community? <Link to="/login">Login here</Link>
       </p>
       </form>
       </div>

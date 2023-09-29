@@ -138,11 +138,6 @@ const Login = () => {
     <StyleLogin>
       <Navbar />
       <div className="login-container">
-
-      {/* <div className="logo">
-        <img className='logoimg' src={logo} alt="Logo" />
-      </div> */}
-
       <div className="form-container">
       <div className="image">
         <img className='gif' src={catdog} alt="Your GIF" />
@@ -180,7 +175,7 @@ const Login = () => {
         </button>
         {error ? <div className="error">{JSON.stringify(error)}</div> : null}
         <p className="registerHere">
-          Don't have an account yet? <Link to="/register">Register here</Link>
+          Looking for a pet companion? <Link to="/register">Register here</Link>
         </p>
       </form>
       </div>

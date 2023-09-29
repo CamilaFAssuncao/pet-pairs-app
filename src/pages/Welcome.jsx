@@ -16,7 +16,7 @@ const Welcome = () => {
 
       <div className="title">
       <h1>Welcome to Pet Pairs</h1>
-      <h3>Find your perfect furry friend!</h3>
+      <h3>Find your fur-ever friend today</h3>
       </div>
 
       <div className="image">
