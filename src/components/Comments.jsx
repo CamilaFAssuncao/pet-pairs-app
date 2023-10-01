@@ -1,8 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-
-const API_URL = 'https://petadopt-431a50d84aab.herokuapp.com/api/comments/';
 
 const CommentContainer = styled.div`
   display: flex;
@@ -10,30 +7,21 @@ const CommentContainer = styled.div`
   margin: 10px 0;
 `;
 
-const UserPicture = styled.img`
-  width: 40px; /* Adjust as needed */
-  height: 40px; /* Adjust as needed */
-  border-radius: 50%;
-  margin-right: 10px;
-`;
-
 const CommentText = styled.p`
   font-size: 16px;
 `;
 
-const Username = styled.span`
-  font-weight: bold;
-  margin-right: 5px;
+const CommentDate = styled.span`
+  font-size: 14px;
+  color: #888;
+  margin-left: 10px;
 `;
 
-const Comments = ({ userPicture, commentText, username }) => {
+const Comments = ({ text, date_commented }) => {
   return (
     <CommentContainer>
-      <UserPicture src={userPicture} alt={`${username}'s profile`} />
-      <div>
-        <Username>{username}:</Username>
-        <CommentText>{commentText}</CommentText>
-      </div>
+      <CommentText>{text}</CommentText>
+      <CommentDate>{date_commented}</CommentDate>
     </CommentContainer>
   );
 };

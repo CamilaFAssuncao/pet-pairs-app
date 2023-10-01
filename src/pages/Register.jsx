@@ -81,6 +81,14 @@ const StyledRegister = styled.div`
      
     }
 
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      justify-content: center;
+    }
+
     .image {
     display: flex;
     justify-content: center;
