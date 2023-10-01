@@ -78,7 +78,10 @@ const StyledPetProfile = styled.div`
 
     /* Style for when additional info is open */
     .additional-info.open {
-      display: block;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center
     }
 
     /* Style for when additional info is closed */
@@ -121,13 +124,11 @@ const calculateAgeInYears = (ageInMonths) => {
   }
 };
 
-const PetProfile = () => {
-    const [pets, setPets] = useState([]);
+const PetProfile = ({ selectedCategories }) => {
+  const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showInfo, setShowInfo] = useState({}); 
-  const [comments, setComments] = useState({});
-
+  const [showInfo, setShowInfo] = useState({});
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -159,7 +160,6 @@ const PetProfile = () => {
     }
   };
 
-
   const toggleInfo = async (petID) => {
     if (!showInfo[petID]) {
       // Fetch comments for the pet if they haven't been fetched yet
@@ -179,14 +179,19 @@ const PetProfile = () => {
     }
   };
 
-
   return (
     <StyledPetProfile>
       <div className="petprofile-container">
         {pets.map((pet) => {
           const ageInYearsAndMonths = calculateAgeInYears(pet.age);
 
-          return (
+          // Check if the pet matches the selected categories
+          const matchesCategories =
+            selectedCategories.length === 0 ||
+            selectedCategories.includes(pet.pet_type) ||
+            selectedCategories.includes(pet.gender);
+
+          return matchesCategories ? (
             <div
               key={pet.id}
               className={`pet-card ${
@@ -222,7 +227,7 @@ const PetProfile = () => {
                 </div> */}
               </div>
             </div>
-          );
+          ) : null; // Render null for pets that don't match selected categories
         })}
       </div>
     </StyledPetProfile>
@@ -230,4 +235,5 @@ const PetProfile = () => {
 };
 
 export default PetProfile;
+
 

@@ -17,6 +17,7 @@ const PetProfilePage = () => {
   ];
 
   const [filteredData, setFilteredData] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]); // Initialize selectedCategories
   const navigate = useNavigate();
 
   // Define a function to handle filtering
@@ -34,10 +35,12 @@ const PetProfilePage = () => {
       <Navbar /> {/* Render the Navbar component */}
       <div className="petprofile-page">
         <Category data={categoryData} onFilter={handleFilter} onAllFiltersSelected={handleAllFiltersSelected} />
-        <PetProfile data={filteredData} />
+        {/* Pass selectedCategories to PetProfile */}
+        <PetProfile data={filteredData} selectedCategories={selectedCategories} />
       </div>
     </>
   );
 };
 
 export default PetProfilePage;
+

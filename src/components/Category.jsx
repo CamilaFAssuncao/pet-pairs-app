@@ -2,11 +2,33 @@ import React, { useState } from "react";
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { Link } from "react-router-dom";
+import paw from "../images/paw.png";
 
 
 const StyleCategory = styled.div`
   width: 100%;
   font-family: "Roboto mono", monospace;
+
+  button {
+    font-family: 'Roboto mono', monospace;
+    background-color: #25938f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 1rem;
+    width: 150px; 
+    text-align: center;
+    cursor: url(${paw}), auto;
+  }
+
+  button:hover {
+    background-color: white; 
+      color: #25938f; 
+      border: 4px solid #25938f; 
+  }
 
   .category-icons {
     display: flex;
@@ -20,7 +42,7 @@ const StyleCategory = styled.div`
       align-items: center;
       width: 80px; 
       height: 80px; 
-      cursor: pointer;
+      cursor: url(${paw}), auto;
 
       img {
         width: 60px;
