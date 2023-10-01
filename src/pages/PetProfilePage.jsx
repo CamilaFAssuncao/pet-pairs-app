@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PetProfile from '../components/PetProfile'; 
 import Category from '../components/Category';
 import Navbar from '../components/NavBar';
@@ -16,18 +17,26 @@ const PetProfilePage = () => {
   ];
 
   const [filteredData, setFilteredData] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]); // Initialize selectedCategories
+  const navigate = useNavigate();
 
   // Define a function to handle filtering
   const handleFilter = (filteredPets) => {
     setFilteredData(filteredPets);
   };
 
+  // Handle the case when all filters are selected
+  const handleAllFiltersSelected = () => {
+    navigate('/GetAPlant');
+  }
+
   return (
     <>
       <Navbar /> {/* Render the Navbar component */}
       <div className="petprofile-page">
-        <Category data={categoryData} onFilter={handleFilter} />
-        <PetProfile data={filteredData} />
+        <Category data={categoryData} onFilter={handleFilter} onAllFiltersSelected={handleAllFiltersSelected} />
+        {/* Pass selectedCategories to PetProfile */}
+        <PetProfile data={filteredData} selectedCategories={selectedCategories} />
       </div>
     </>
   );

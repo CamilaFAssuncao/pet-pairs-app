@@ -5,6 +5,7 @@ import Comments from '../components/Comments';
 import axios from 'axios';
 
 const API_URL = 'https://petadopt-431a50d84aab.herokuapp.com/api/pets/';
+const COMMENTS_API_URL = 'https://petadopt-431a50d84aab.herokuapp.com/api/comments/';
 
 const StyledPetProfile = styled.div`
   font-family: 'Roboto mono', monospace;
@@ -77,7 +78,10 @@ const StyledPetProfile = styled.div`
 
     /* Style for when additional info is open */
     .additional-info.open {
-      display: block;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center
     }
 
     /* Style for when additional info is closed */
@@ -120,11 +124,11 @@ const calculateAgeInYears = (ageInMonths) => {
   }
 };
 
-const PetProfile = () => {
-    const [pets, setPets] = useState([]);
+const PetProfile = ({ selectedCategories }) => {
+  const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showInfo, setShowInfo] = useState({}); // State to track info display
+  const [showInfo, setShowInfo] = useState({});
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -144,8 +148,12 @@ const PetProfile = () => {
 
   const fetchCommentsForPet = async (petID) => {
     try {
-      const response = await axios.get(`${API_URL}${petID}/comments/`);
-      return response.data;
+      const response = await axios.get(`${COMMENTS_API_URL}?pet=${petID}`);
+      const comments = response.data;
+
+      console.log('Comments for pet', petID, ':', comments);
+
+      return comments;
     } catch (err) {
       console.error(`Error fetching comments for pet ${petID}:`, err);
       return [];
@@ -171,21 +179,25 @@ const PetProfile = () => {
     }
   };
 
-
   return (
     <StyledPetProfile>
       <div className="petprofile-container">
-
         {pets.map((pet) => {
           const ageInYearsAndMonths = calculateAgeInYears(pet.age);
 
-          return (
+          // Check if the pet matches the selected categories
+          const matchesCategories =
+            selectedCategories.length === 0 ||
+            selectedCategories.includes(pet.pet_type) ||
+            selectedCategories.includes(pet.gender);
+
+          return matchesCategories ? (
             <div
-              key={pet.petID}
+              key={pet.id}
               className={`pet-card ${
-                showInfo[pet.petID] ? 'open' : 'closed'
+                showInfo[pet.id] ? 'open' : 'closed'
               }`}
-              onClick={() => toggleInfo(pet.petID)} // Toggle info on click
+              onClick={() => toggleInfo(pet.id)} // Toggle info on click
             >
               <img className="pet-picture" src={pet.img} alt="" />
               <p className="location">📍{pet.location}</p>
@@ -193,29 +205,29 @@ const PetProfile = () => {
                 <h3 className="name-age">
                   {pet.name}, {ageInYearsAndMonths}
                 </h3>
-                {/* <h5 className="characteristics">
-                  {pet.gender}, {pet.type}
-                </h5> */}
               </div>
-              <div className={`additional-info ${showInfo[pet.petID] ? 'open' : 'closed'}`}>
+              <div
+                className={`additional-info ${
+                  showInfo[pet.id] ? 'open' : 'closed'
+                }`}
+              >
                 <h4 className="description">{pet.description}</h4>
                 <p className="status">{pet.status}</p>
 
-                <div className="comments-container">
-                  {showInfo[pet.petID] && showInfo[pet.petID].comments && (
-                    showInfo[pet.petID].comments.map((comment) => (
+                {/* <div className="comments-container">
+                  {showInfo[pet.id] &&
+                    showInfo[pet.id].comments &&
+                    showInfo[pet.id].comments.map((comment) => (
                       <Comments
                         key={comment.id}
-                        userPicture={comment.userPicture}
-                        commentText={comment.commentText}
-                        username={comment.username}
+                        date_commented={comment.date_commented}
+                        commentText={comment.text}
                       />
-                    ))
-                  )}
-                </div>
+                    ))}
+                </div> */}
               </div>
             </div>
-          );
+          ) : null; // Render null for pets that don't match selected categories
         })}
       </div>
     </StyledPetProfile>
@@ -223,4 +235,5 @@ const PetProfile = () => {
 };
 
 export default PetProfile;
+
 

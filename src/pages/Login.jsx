@@ -123,7 +123,6 @@ const Login = () => {
     e.preventDefault();
     await login(form);
     setForm(initialState);
-    alert("You are now logged in!");
   };
 
   const handleChange = (e) => {
