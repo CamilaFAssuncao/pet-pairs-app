@@ -87,50 +87,43 @@ const StyleCategory = styled.div`
 
 const Category = ({ data, onFilter }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const navigate = useNavigate(); // Initialize the navigate function
-
-  const genderMapping = {
-    male: "M",
-    female: "F",
-  };
+  const navigate = useNavigate();
 
   const handleCategoryClick = (category) => {
-    // Map the category name to the database value for gender categories
-    if (category.name === "male" || category.name === "female") {
-      category = { ...category, name: genderMapping[category.name] };
-    }
-
     // Toggle the selected category
-    if (selectedCategories.includes(category.name)) {
-      setSelectedCategories(
-        selectedCategories.filter((cat) => cat !== category.name)
-      );
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((cat) => cat !== category));
     } else {
-      setSelectedCategories([...selectedCategories, category.name]);
+      setSelectedCategories([...selectedCategories, category]);
     }
   };
 
   const applyFilter = () => {
-    // Call the onFilter callback to apply the filter
-    const filteredData = data.filter((item) => {
+    // Create a filter function based on selected categories
+    const filterFunction = (item) => {
       if (
-        selectedCategories.includes("male") ||
-        selectedCategories.includes("female")
+        selectedCategories.includes('male') ||
+        selectedCategories.includes('female')
       ) {
         return (
           (item.gender && selectedCategories.includes(item.gender)) ||
-          selectedCategories.includes(item.name)
+          selectedCategories.includes(item.pet_type)
         );
       } else {
-        return selectedCategories.includes(item.name);
+        return selectedCategories.includes(item.pet_type);
       }
-    });
+    };
 
+    // Apply the filter and call the onFilter callback
+    const filteredData = data.filter(filterFunction);
     onFilter(filteredData);
 
-    // If all filters are selected, use navigate to redirect to the "Get a Plant" page
-    if (selectedCategories.length === data.length) {
-      navigate("/GetAPlant");
+    // Check if all filters are selected to navigate
+    if (
+      selectedCategories.length === data.length ||
+      (selectedCategories.includes('male') && selectedCategories.includes('female'))
+    ) {
+      navigate('/GetAPlant');
     }
   };
 
@@ -142,9 +135,9 @@ const Category = ({ data, onFilter }) => {
             <div
               key={category.name}
               className={`category-icon ${
-                selectedCategories.includes(category.name) ? "selected" : ""
+                selectedCategories.includes(category.name) ? 'selected' : ''
               }`}
-              onClick={() => handleCategoryClick(category)}
+              onClick={() => handleCategoryClick(category.name)}
             >
               <img src={category.image} alt={category.name} />
               <span className="category-name">{category.name}</span>
@@ -157,5 +150,6 @@ const Category = ({ data, onFilter }) => {
   );
 };
 
-export default Category;
 
+
+export default Category;

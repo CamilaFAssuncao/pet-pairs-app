@@ -136,6 +136,7 @@ const PetProfile = ({ selectedCategories }) => {
         setLoading(true);
         const response = await axios.get(API_URL);
         setPets(response.data);
+        
       } catch (err) {
         setError(err);
       } finally {
